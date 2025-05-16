@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    <link rel="icon" href="{% static 'favicon.png' %}" type="image/png">
+    <title>Todo List</title>
+</head>
+<body class="bg-primary text-white d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+
+    <div class="todo-form p-4 p-md-5 shadow-lg rounded-4" style="width: 100%; max-width: 500px; background-color: rgba(31, 31, 236, 0.85);">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Hello 👋, {{ user.username }}</h3>
+            <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm" title="Logout">🔓 Logout</a>
+        </div>
+
+        <h1 class="text-center mb-4">Get Things Done?</h1>
+
+        <form action="" method="POST" class="mb-4" novalidate>
+            {% csrf_token %}
+            <input
+                type="text"
+                name="todo-task"
+                id="todo-input"
+                class="form-control form-control-lg"
+                placeholder="What is the task today?"
+                required
+                autofocus
+                autocomplete="off"
+            />
+            <button type="submit" id="add-btn" class="btn btn-dark btn-lg w-100 mt-3">Add Task</button>
+        </form>
+
+        <div class="tasks-list">
+            {% for main_task in main_tasks %}
+                <div class="task d-flex justify-content-between align-items-center mb-3 p-3 rounded-3">
+                    <p class="task-text mb-0 flex-grow-1 me-3">{{ main_task.title }}</p>
+                    <div class="customization d-flex gap-3">
+                        <a href="{% url 'edit' main_task.srno %}" class="text-white" title="Edit task">✏️</a>
+                        <a href="{% url 'delete' main_task.srno %}" class="text-white" title="Delete task">❌</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center">No tasks yet. Add something to get started!</p>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

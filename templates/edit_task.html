@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'edit_task.css' %}" />
+    <link rel="icon" href="{% static 'favicon.png' %}" type="image/png">
+    <title>Edit Task - Todo List</title>
+</head>
+<body class="bg-primary text-white d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    
+    <div class="update-form p-4 p-md-5 shadow rounded-4" style="background-color: rgba(31, 31, 236, 0.85); width: 100%; max-width: 500px;">
+        <h1 class="text-center mb-4">Edit Your Task</h1>
+
+        <form method="POST" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="task" class="form-label">Task</label>
+                <input
+                    type="text"
+                    name="task"
+                    id="task"
+                    value="{{ task.title }}"
+                    class="form-control form-control-lg"
+                    required
+                    autofocus
+                />
+            </div>
+
+            <button type="submit" id="update-btn" class="btn btn-dark btn-lg w-100">Update Task</button>
+        </form>
+    </div>
+
+</body>
+</html>
