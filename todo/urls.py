@@ -15,12 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from core.views import create_task, user_signup, user_login, user_logout, redirect_to_main_page, deleting_task, editing_task
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', redirect_to_main_page, name='redirecting'),
+    path('', include('pwa.urls')),  # <-- PWA URLs first, handles service worker, manifest, etc.
+    path('', redirect_to_main_page, name='redirecting'),  # <-- This handles root redirect after PWA URLs
     path('home/', create_task, name='home'),
     path('login/', user_login, name='login'),
     path('signup/', user_signup, name='signup'),

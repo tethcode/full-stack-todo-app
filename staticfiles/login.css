@@ -1,0 +1,34 @@
+/* Reset and base styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container styles handled by Bootstrap flex utilities */
+
+/* Form container tweaks */
+.login-form {
+    /* Background & shadow handled inline or by bootstrap classes */
+}
+
+#login-btn {
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#login-btn:hover {
+    background-color: rgb(71, 71, 71) !important;
+}
+
+/* Inputs are styled by Bootstrap .form-control but add custom padding */
+input.form-control {
+    padding: 8px 12px;
+}
+
+/* Signup link style */
+#account a:hover {
+    text-decoration: underline;
+}

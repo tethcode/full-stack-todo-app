@@ -1,0 +1,68 @@
+/* Reset margins/padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.todo-form {
+    background-color: rgba(31, 31, 236, 0.85);
+    box-shadow: 0 0 10px 0 white;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+/* Buttons and inputs use Bootstrap, customize if needed */
+#add-btn {
+    border-radius: 8px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#add-btn:hover {
+    background-color: rgb(71, 71, 71) !important;
+}
+
+.task {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    word-break: break-word; /* Ensures long words break */
+    box-sizing: border-box;
+    color: white;
+}
+
+.task-text {
+    overflow-wrap: break-word;
+    white-space: normal;
+    font-size: 1rem;
+}
+
+.customization a {
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.customization a:hover {
+    color: #ffd700; /* gold-ish highlight */
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    .todo-form {
+        padding: 2rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #add-btn {
+        font-size: 1.1rem;
+    }
+
+    .customization a {
+        font-size: 1.1rem;
+    }
+}

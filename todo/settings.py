@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-@2p1u$isb1-ijl8dg=79@6vdo_+b^u$bv$)1n+k!v)%%63q5@w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -116,12 +118,44 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",  # or os.path.join(BASE_DIR, 'static') if not using Path
+    os.path.join(BASE_DIR, 'static'),  # or os.path.join(BASE_DIR, 'static') if not using Path
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/serviceworker.js')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+PWA_APP_NAME = 'Todo App'
+PWA_APP_DESCRIPTION = "A simple Django Todo PWA"
+PWA_APP_THEME_COLOR = '#007bff'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'portrait'
+PWA_APP_START_URL = '/'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/android-chrome-192x192.png',
+        'sizes': '192x192'
+    },
+    {
+        'src': '/static/android-chrome-512x512.png',
+        'sizes': '512x512'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': '/static/apple-touch-icon.png',
+        'sizes': '180x180'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
