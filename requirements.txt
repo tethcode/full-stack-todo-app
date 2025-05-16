@@ -2,3 +2,4 @@ Pillow
 Django
 gunicorn
 django-pwa
+whitenoise
